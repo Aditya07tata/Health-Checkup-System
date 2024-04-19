@@ -4,7 +4,6 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import Switch from "@mui/material/Switch";
 import InputAdornment from "@mui/material/InputAdornment";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import RefreshIcon from "@mui/icons-material/Refresh";
@@ -12,7 +11,6 @@ import { Logout } from "@mui/icons-material";
 import { Box, IconButton } from "@mui/material";
 
 export default function LoginForm() {
-  const [termsAccepted, setTermsAccepted] = React.useState(false);
   const [formValues, setFormValues] = React.useState({
     userId: "",
     password: "",
@@ -41,16 +39,6 @@ export default function LoginForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (termsAccepted) {
-      console.log("Form submitted");
-      console.log("Form values:", formValues);
-    } else {
-      alert("Please accept the Terms and Conditions to proceed.");
-    }
-  };
-
-  const handleChange = (event) => {
-    setTermsAccepted(event.target.checked);
   };
 
   const handleInputChange = (event) => {
@@ -158,7 +146,7 @@ export default function LoginForm() {
                   zIndex: 1, // Ensure the icon is above other content
                 }}
               >
-                <Logout sx={{ fontSize: 28 }} /> {/* Increase icon size */}
+                <Logout sx={{ fontSize: 28 }} /> 
               </IconButton>
             </Typography>
 
@@ -178,7 +166,7 @@ export default function LoginForm() {
                 onChange={handleInputChange}
                 onFocus={() => handleInputFocus("userId")}
                 onBlur={() => handleInputBlur("userId")}
-                helperText="Enter UserID"
+                helperText={userIdHelperText}
                 variant="standard"
                 fullWidth
                 required
@@ -237,7 +225,7 @@ export default function LoginForm() {
                     ),
                   }}
                 />
-                
+
                 <Typography
                   variant="body2"
                   sx={{
@@ -249,7 +237,10 @@ export default function LoginForm() {
                   }}
                   onClick={handleRefreshCaptcha}
                 >
-                  <span style={{ marginRight: "3rem", fontSize: "1.5rem" }}>
+                  <span
+                    className="unselectable"
+                    style={{ marginRight: "3rem", fontSize: "1.5rem" }}
+                  >
                     {captchaText}
                   </span>
                   <RefreshIcon />
@@ -262,17 +253,7 @@ export default function LoginForm() {
                   alignItems: "left", // Align items vertically
                   marginRight: "1rem", // Add margin to the right side
                 }}
-              >
-                {/* <Switch
-                  checked={termsAccepted}
-                  onChange={handleChange}
-                  required
-                  inputProps={{ "aria-label": "accept terms and conditions" }}
-                />
-                <Typography variant="body3">
-                  I agree to the Terms and Conditions
-                </Typography> */}
-              </div>
+              ></div>
 
               <CardContent
                 sx={{
@@ -283,7 +264,7 @@ export default function LoginForm() {
                 <Button
                   type="submit"
                   variant="contained"
-                  disabled={!termsAccepted}
+                  // disabled={}
                   sx={{
                     width: "45%",
                     padding: "0.75rem 1rem",
@@ -291,19 +272,6 @@ export default function LoginForm() {
                 >
                   Login
                 </Button>
-                {/* <Typography
-                  component="a"
-                  href="#"
-                  sx={{
-                    flex: "1",
-                    textAlign: "right",
-                    textDecoration: "none",
-                    color: "#215eb2",
-                    lineHeight: "2.50rem",
-                  }}
-                >
-                  Change Password
-                </Typography> */}
               </CardContent>
             </form>
           </CardContent>
