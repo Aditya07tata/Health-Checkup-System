@@ -170,11 +170,14 @@ export default function LoginForm() {
                 variant="standard"
                 fullWidth
                 required
+                
                 InputProps={{
-                  endAdornment: formValues.userId && (
+                  endAdornment: formValues.userId && formValues.userId.length >=6 ?(<InputAdornment position="end">
+                 
+                </InputAdornment>) : (
                     <InputAdornment position="end">
-                      <ErrorOutlineIcon color="error" />
-                    </InputAdornment>
+                    <ErrorOutlineIcon color="error" />
+                  </InputAdornment>
                   ),
                 }}
               />
@@ -191,11 +194,14 @@ export default function LoginForm() {
                 variant="standard"
                 fullWidth
                 required
+                
                 InputProps={{
-                  endAdornment: formValues.password && (
+                  endAdornment: formValues.password && formValues.password.length >=6 ?(<InputAdornment position="end">
+                 
+                </InputAdornment>) : (
                     <InputAdornment position="end">
-                      <ErrorOutlineIcon color="error" />
-                    </InputAdornment>
+                    <ErrorOutlineIcon color="error" />
+                  </InputAdornment>
                   ),
                 }}
               />
@@ -218,14 +224,16 @@ export default function LoginForm() {
                   variant="standard"
                   required
                   InputProps={{
-                    endAdornment: formValues.captchaValue && (
+                    endAdornment: formValues.captchaValue && formValues.captchaValue.length >=6 ?(<InputAdornment position="end">
+                   
+                  </InputAdornment>) : (
                       <InputAdornment position="end">
-                        <ErrorOutlineIcon color="error" />
-                      </InputAdornment>
+                      <ErrorOutlineIcon color="error" />
+                    </InputAdornment>
                     ),
                   }}
                 />
-
+                
                 <Typography
                   variant="body2"
                   sx={{
