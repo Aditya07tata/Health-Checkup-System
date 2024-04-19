@@ -6,5 +6,3 @@ git push origin "branch_name" => push to main branch
 git branch => to check all branch
 git pull origin master => pull files from main branch
 git push origin master
-
-
