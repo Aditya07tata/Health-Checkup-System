@@ -1,0 +1,3 @@
+git Status => to check your files status
+git add . => add changes to commit
+git checkout -b "branch_name" => change branch 
