@@ -1,38 +1,59 @@
-.App {
-  text-align: center;
+*{
+    /* height: 100%; */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login_container{
+    margin-right: auto;
+    display: block;    
+    line-height: 0px;
+    margin-top: 100px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.subtitle{
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 0.1rem;
+    letter-spacing: 0.00937em;
+    margin-bottom: 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin-top: 80px; */
+    
 }
 
-.App-link {
-  color: #61dafb;
+.logo{
+    margin-left: "auto";
+    margin-right: "auto";
+    width: 100px;
+}
+.login_card{
+    margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card{
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+}
+
+.input_field{
+    width: auto;
+    line-height: 1rem;
+    size: 18px;
+}
+.user_tf .pass_tf .captcha_tf{
+    height: 1px;
+    font-size: 12px;
+}
+
+.login_text{
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 2rem;
+    letter-spacing: 0.0125em;
 }
