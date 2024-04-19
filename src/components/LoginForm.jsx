@@ -262,7 +262,7 @@ export default function LoginForm() {
                   marginRight: "1rem", // Add margin to the right side
                 }}
               >
-                <Switch
+                {/* <Switch
                   checked={termsAccepted}
                   onChange={handleChange}
                   required
@@ -270,7 +270,7 @@ export default function LoginForm() {
                 />
                 <Typography variant="body3">
                   I agree to the Terms and Conditions
-                </Typography>
+                </Typography> */}
               </div>
 
               <CardContent
@@ -290,7 +290,7 @@ export default function LoginForm() {
                 >
                   Login
                 </Button>
-                <Typography
+                {/* <Typography
                   component="a"
                   href="#"
                   sx={{
@@ -302,7 +302,7 @@ export default function LoginForm() {
                   }}
                 >
                   Change Password
-                </Typography>
+                </Typography> */}
               </CardContent>
             </form>
           </CardContent>
