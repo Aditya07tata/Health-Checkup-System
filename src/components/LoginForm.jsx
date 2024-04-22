@@ -279,8 +279,8 @@ export default function LoginForm() {
                       ref={canvasRef}
                       id="captchaCanvas"
                       className="capcode"
-                      width="110"
                       height="90"
+                      width="110"
                       onClick={handleCanvasClick}
                     >
                     </canvas>
