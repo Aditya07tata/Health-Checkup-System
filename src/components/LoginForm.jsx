@@ -25,13 +25,13 @@ export default function LoginForm() {
   );
   const [captchaText, setCaptchaText] = React.useState(generateCaptcha());
   const canvasRef = React.useRef(null);
-  const [userInput, setUserInput] = React.useState("");
-  const [isCaptchaValid, setIsCaptchaValid] = React.useState(false);
+
 
 
   function generateCaptcha() {
+
     const characters =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&";
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&^%";
     let captcha = "";
     for (let i = 0; i < 6; i++) {
       captcha += characters.charAt(
@@ -46,7 +46,7 @@ export default function LoginForm() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.font = "25px Roboto Slab";
-    ctx.fillStyle = "#ccc";
+    ctx.fillStyle = "rgb(30,30,30)";
     ctx.textAlign = "center";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillText(captchaText, canvas.width / 2, 55);
@@ -267,22 +267,26 @@ export default function LoginForm() {
                     color: "#000000",
                     marginLeft: "2rem",
                   }}
+
+                  
                   onClick={handleRefreshCaptcha}
                 >
-                  <span
+                  <div
                     className="unselectable"
-                    style={{ marginRight: "3rem", fontSize: "1.5rem" }}
+                    style={{ marginRight: "0.5rem", fontSize: "1.5rem" }}
                   >
                     <canvas
                       ref={canvasRef}
                       id="captchaCanvas"
                       className="capcode"
-                      width="110"
                       height="90"
+                      width="110"
                       onClick={handleCanvasClick}
-                    ></canvas>
-                  </span>
-                  <RefreshIcon />
+                    >
+                    </canvas>
+                  </div>
+                  <div><RefreshIcon style={{ marginRight: "0rem", fontSize: "1.5rem" }} /></div>
+
                 </Typography>
               </div>
 
