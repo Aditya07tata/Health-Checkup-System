@@ -146,7 +146,7 @@ export default function LoginForm() {
                   zIndex: 1, // Ensure the icon is above other content
                 }}
               >
-                <Logout sx={{ fontSize: 28 }} /> 
+                <Logout sx={{ fontSize: 28 }} />
               </IconButton>
             </Typography>
 
@@ -170,15 +170,16 @@ export default function LoginForm() {
                 variant="standard"
                 fullWidth
                 required
-                
                 InputProps={{
-                  endAdornment: formValues.userId && formValues.userId.length >=6 ?(<InputAdornment position="end">
-                 
-                </InputAdornment>) : (
-                    <InputAdornment position="end">
-                    <ErrorOutlineIcon color="error" />
-                  </InputAdornment>
-                  ),
+                  endAdornment:
+                    formValues.userId.length === 1 &&
+                    formValues.userId.length >= 6 ? (
+                      <InputAdornment position="end"></InputAdornment>
+                    ) : (
+                      <InputAdornment position="end">
+                        <ErrorOutlineIcon color="error" />
+                      </InputAdornment>
+                    ),
                 }}
               />
               <TextField
@@ -194,15 +195,15 @@ export default function LoginForm() {
                 variant="standard"
                 fullWidth
                 required
-                
                 InputProps={{
-                  endAdornment: formValues.password && formValues.password.length >=6 ?(<InputAdornment position="end">
-                 
-                </InputAdornment>) : (
-                    <InputAdornment position="end">
-                    <ErrorOutlineIcon color="error" />
-                  </InputAdornment>
-                  ),
+                  endAdornment:
+                    formValues.password && formValues.password.length >= 6 ? (
+                      <InputAdornment position="end"></InputAdornment>
+                    ) : (
+                      <InputAdornment position="end">
+                        <ErrorOutlineIcon color="error" />
+                      </InputAdornment>
+                    ),
                 }}
               />
               <div
@@ -224,16 +225,18 @@ export default function LoginForm() {
                   variant="standard"
                   required
                   InputProps={{
-                    endAdornment: formValues.captchaValue && formValues.captchaValue.length >=6 ?(<InputAdornment position="end">
-                   
-                  </InputAdornment>) : (
-                      <InputAdornment position="end">
-                      <ErrorOutlineIcon color="error" />
-                    </InputAdornment>
-                    ),
+                    endAdornment:
+                      formValues.captchaValue &&
+                      formValues.captchaValue.length >= 6 ? (
+                        <InputAdornment position="end"></InputAdornment>
+                      ) : (
+                        <InputAdornment position="end">
+                          <ErrorOutlineIcon color="error" />
+                        </InputAdornment>
+                      ),
                   }}
                 />
-                
+
                 <Typography
                   variant="body2"
                   sx={{
