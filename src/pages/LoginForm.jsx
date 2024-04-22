@@ -25,9 +25,8 @@ export default function LoginForm() {
   );
   const [captchaText, setCaptchaText] = React.useState(generateCaptcha());
   const canvasRef = React.useRef(null);
-  const [userInput, setUserInput] = React.useState("");
-  const [isCaptchaValid, setIsCaptchaValid] = React.useState(false);
-
+  // const [userInput, setUserInput] = React.useState("");
+  // const [isCaptchaValid, setIsCaptchaValid] = React.useState(false);
 
   function generateCaptcha() {
     const characters =
@@ -41,17 +40,15 @@ export default function LoginForm() {
     return captcha;
   }
 
-
   React.useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     ctx.font = "25px Roboto Slab";
-    ctx.fillStyle = "#ccc";
+    ctx.fillStyle = "#000000";
     ctx.textAlign = "center";
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillText(captchaText, canvas.width / 2, 55);
   }, [captchaText]);
-
 
   const handleCanvasClick = () => {
     const canvas = canvasRef.current;
@@ -193,15 +190,15 @@ export default function LoginForm() {
                 variant="standard"
                 fullWidth
                 required
-
                 InputProps={{
-                  endAdornment: formValues.userId && formValues.userId.length >= 6 ? (<InputAdornment position="end">
-
-                  </InputAdornment>) : (
-                    <InputAdornment position="end">
-                      <ErrorOutlineIcon color="error" />
-                    </InputAdornment>
-                  ),
+                  endAdornment:
+                    formValues.userId && formValues.userId.length >= 6 ? (
+                      <InputAdornment position="end"></InputAdornment>
+                    ) : (
+                      <InputAdornment position="end">
+                        <ErrorOutlineIcon color="error" />
+                      </InputAdornment>
+                    ),
                 }}
               />
               <TextField
@@ -217,15 +214,15 @@ export default function LoginForm() {
                 variant="standard"
                 fullWidth
                 required
-
                 InputProps={{
-                  endAdornment: formValues.password && formValues.password.length >= 6 ? (<InputAdornment position="end">
-
-                  </InputAdornment>) : (
-                    <InputAdornment position="end">
-                      <ErrorOutlineIcon color="error" />
-                    </InputAdornment>
-                  ),
+                  endAdornment:
+                    formValues.password && formValues.password.length >= 6 ? (
+                      <InputAdornment position="end"></InputAdornment>
+                    ) : (
+                      <InputAdornment position="end">
+                        <ErrorOutlineIcon color="error" />
+                      </InputAdornment>
+                    ),
                 }}
               />
               <div
@@ -235,8 +232,8 @@ export default function LoginForm() {
                   marginBottom: "1rem",
                 }}
               >
-
                 <TextField
+                  
                   error={!formValues.captchaValue}
                   id="captchaValue"
                   label="Captcha Value"
@@ -248,13 +245,15 @@ export default function LoginForm() {
                   variant="standard"
                   required
                   InputProps={{
-                    endAdornment: formValues.captchaValue && formValues.captchaValue.length >= 6 ? (<InputAdornment position="end">
-
-                    </InputAdornment>) : (
-                      <InputAdornment position="end">
-                        <ErrorOutlineIcon color="error" />
-                      </InputAdornment>
-                    ),
+                    endAdornment:
+                      formValues.captchaValue &&
+                      formValues.captchaValue.length >= 6 ? (
+                        <InputAdornment position="end"></InputAdornment>
+                      ) : (
+                        <InputAdornment position="end">
+                          <ErrorOutlineIcon color="error" />
+                        </InputAdornment>
+                      ),
                   }}
                 />
 
@@ -286,7 +285,6 @@ export default function LoginForm() {
                 </Typography>
               </div>
 
-
               <div
                 sx={{
                   display: "flex",
@@ -305,7 +303,6 @@ export default function LoginForm() {
                 <Button
                   type="submit"
                   variant="contained"
-                  // disabled={}
                   sx={{
                     width: "45%",
                     padding: "0.75rem 1rem",
