@@ -241,7 +241,7 @@ export default function LoginForm() {
                     alignItems: "center",
                     cursor: "pointer",
                     color: "#000000",
-                    marginLeft: "2rem",
+                    marginLeft: "3rem",
                   }}
                   onClick={handleRefreshCaptcha}
                 >
