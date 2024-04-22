@@ -24,6 +24,10 @@ export default function LoginForm() {
     "Enter captcha value"
   );
   const [captchaText, setCaptchaText] = React.useState(generateCaptcha());
+  const canvasRef = React.useRef(null);
+  const [userInput, setUserInput] = React.useState("");
+  const [isCaptchaValid, setIsCaptchaValid] = React.useState(false);
+
 
   function generateCaptcha() {
     const characters =
@@ -36,6 +40,25 @@ export default function LoginForm() {
     }
     return captcha;
   }
+
+
+  React.useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.font = "25px Roboto Slab";
+    ctx.fillStyle = "#ccc";
+    ctx.textAlign = "center";
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillText(captchaText, canvas.width / 2, 55);
+  }, [captchaText]);
+
+
+  const handleCanvasClick = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillText(captchaText, canvas.width / 2, 55);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -146,7 +169,7 @@ export default function LoginForm() {
                   zIndex: 1, // Ensure the icon is above other content
                 }}
               >
-                <Logout sx={{ fontSize: 28 }} /> 
+                <Logout sx={{ fontSize: 28 }} />
               </IconButton>
             </Typography>
 
@@ -170,14 +193,14 @@ export default function LoginForm() {
                 variant="standard"
                 fullWidth
                 required
-                
+
                 InputProps={{
-                  endAdornment: formValues.userId && formValues.userId.length >=6 ?(<InputAdornment position="end">
-                 
-                </InputAdornment>) : (
+                  endAdornment: formValues.userId && formValues.userId.length >= 6 ? (<InputAdornment position="end">
+
+                  </InputAdornment>) : (
                     <InputAdornment position="end">
-                    <ErrorOutlineIcon color="error" />
-                  </InputAdornment>
+                      <ErrorOutlineIcon color="error" />
+                    </InputAdornment>
                   ),
                 }}
               />
@@ -194,14 +217,14 @@ export default function LoginForm() {
                 variant="standard"
                 fullWidth
                 required
-                
+
                 InputProps={{
-                  endAdornment: formValues.password && formValues.password.length >=6 ?(<InputAdornment position="end">
-                 
-                </InputAdornment>) : (
+                  endAdornment: formValues.password && formValues.password.length >= 6 ? (<InputAdornment position="end">
+
+                  </InputAdornment>) : (
                     <InputAdornment position="end">
-                    <ErrorOutlineIcon color="error" />
-                  </InputAdornment>
+                      <ErrorOutlineIcon color="error" />
+                    </InputAdornment>
                   ),
                 }}
               />
@@ -212,6 +235,7 @@ export default function LoginForm() {
                   marginBottom: "1rem",
                 }}
               >
+
                 <TextField
                   error={!formValues.captchaValue}
                   id="captchaValue"
@@ -224,16 +248,16 @@ export default function LoginForm() {
                   variant="standard"
                   required
                   InputProps={{
-                    endAdornment: formValues.captchaValue && formValues.captchaValue.length >=6 ?(<InputAdornment position="end">
-                   
-                  </InputAdornment>) : (
+                    endAdornment: formValues.captchaValue && formValues.captchaValue.length >= 6 ? (<InputAdornment position="end">
+
+                    </InputAdornment>) : (
                       <InputAdornment position="end">
-                      <ErrorOutlineIcon color="error" />
-                    </InputAdornment>
+                        <ErrorOutlineIcon color="error" />
+                      </InputAdornment>
                     ),
                   }}
                 />
-                
+
                 <Typography
                   variant="body2"
                   sx={{
@@ -249,11 +273,20 @@ export default function LoginForm() {
                     className="unselectable"
                     style={{ marginRight: "3rem", fontSize: "1.5rem" }}
                   >
-                    {captchaText}
+                    <canvas
+                      ref={canvasRef}
+                      id="captchaCanvas"
+                      className="capcode"
+                      width="110"
+                      height="90"
+                      onClick={handleCanvasClick}
+                    ></canvas>
                   </span>
                   <RefreshIcon />
                 </Typography>
               </div>
+
+
               <div
                 sx={{
                   display: "flex",
